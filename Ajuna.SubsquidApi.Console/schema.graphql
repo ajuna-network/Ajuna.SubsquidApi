@@ -1,0 +1,844 @@
+﻿schema {
+  query: Query
+}
+
+type Query {
+  metadata(where: MetadataWhereInput orderBy: [MetadataOrderByInput!] offset: Int limit: Int): [Metadata!]!
+  metadataById(id: String!): Metadata
+  metadataByUniqueInput(where: WhereIdInput!): Metadata @deprecated(reason: "Use metadataById")
+  metadataConnection(orderBy: [MetadataOrderByInput!]! after: String first: Int where: MetadataWhereInput): MetadataConnection!
+  blocks(where: BlockWhereInput orderBy: [BlockOrderByInput!] offset: Int limit: Int): [Block!]!
+  blockById(id: String!): Block
+  blockByUniqueInput(where: WhereIdInput!): Block @deprecated(reason: "Use blockById")
+  blocksConnection(orderBy: [BlockOrderByInput!]! after: String first: Int where: BlockWhereInput): BlocksConnection!
+  calls(where: CallWhereInput orderBy: [CallOrderByInput!] offset: Int limit: Int): [Call!]!
+  callById(id: String!): Call
+  callByUniqueInput(where: WhereIdInput!): Call @deprecated(reason: "Use callById")
+  callsConnection(orderBy: [CallOrderByInput!]! after: String first: Int where: CallWhereInput): CallsConnection!
+  events(where: EventWhereInput orderBy: [EventOrderByInput!] offset: Int limit: Int): [Event!]!
+  eventById(id: String!): Event
+  eventByUniqueInput(where: WhereIdInput!): Event @deprecated(reason: "Use eventById")
+  eventsConnection(orderBy: [EventOrderByInput!]! after: String first: Int where: EventWhereInput): EventsConnection!
+  extrinsics(where: ExtrinsicWhereInput orderBy: [ExtrinsicOrderByInput!] offset: Int limit: Int): [Extrinsic!]!
+  extrinsicById(id: String!): Extrinsic
+  extrinsicByUniqueInput(where: WhereIdInput!): Extrinsic @deprecated(reason: "Use extrinsicById")
+  extrinsicsConnection(orderBy: [ExtrinsicOrderByInput!]! after: String first: Int where: ExtrinsicWhereInput): ExtrinsicsConnection!
+}
+
+type Metadata {
+  id: String!
+  specName: String!
+  specVersion: Int
+  blockHeight: Int!
+  blockHash: String!
+  hex: String!
+}
+
+input MetadataWhereInput {
+  id_isNull: Boolean
+  id_eq: String
+  id_not_eq: String
+  id_gt: String
+  id_gte: String
+  id_lt: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_not_contains: String
+  id_containsInsensitive: String
+  id_not_containsInsensitive: String
+  id_startsWith: String
+  id_not_startsWith: String
+  id_endsWith: String
+  id_not_endsWith: String
+  specName_isNull: Boolean
+  specName_eq: String
+  specName_not_eq: String
+  specName_gt: String
+  specName_gte: String
+  specName_lt: String
+  specName_lte: String
+  specName_in: [String!]
+  specName_not_in: [String!]
+  specName_contains: String
+  specName_not_contains: String
+  specName_containsInsensitive: String
+  specName_not_containsInsensitive: String
+  specName_startsWith: String
+  specName_not_startsWith: String
+  specName_endsWith: String
+  specName_not_endsWith: String
+  specVersion_isNull: Boolean
+  specVersion_eq: Int
+  specVersion_not_eq: Int
+  specVersion_gt: Int
+  specVersion_gte: Int
+  specVersion_lt: Int
+  specVersion_lte: Int
+  specVersion_in: [Int!]
+  specVersion_not_in: [Int!]
+  blockHeight_isNull: Boolean
+  blockHeight_eq: Int
+  blockHeight_not_eq: Int
+  blockHeight_gt: Int
+  blockHeight_gte: Int
+  blockHeight_lt: Int
+  blockHeight_lte: Int
+  blockHeight_in: [Int!]
+  blockHeight_not_in: [Int!]
+  blockHash_isNull: Boolean
+  blockHash_eq: String
+  blockHash_not_eq: String
+  blockHash_gt: String
+  blockHash_gte: String
+  blockHash_lt: String
+  blockHash_lte: String
+  blockHash_in: [String!]
+  blockHash_not_in: [String!]
+  blockHash_contains: String
+  blockHash_not_contains: String
+  blockHash_containsInsensitive: String
+  blockHash_not_containsInsensitive: String
+  blockHash_startsWith: String
+  blockHash_not_startsWith: String
+  blockHash_endsWith: String
+  blockHash_not_endsWith: String
+  hex_isNull: Boolean
+  hex_eq: String
+  hex_not_eq: String
+  hex_gt: String
+  hex_gte: String
+  hex_lt: String
+  hex_lte: String
+  hex_in: [String!]
+  hex_not_in: [String!]
+  hex_contains: String
+  hex_not_contains: String
+  hex_containsInsensitive: String
+  hex_not_containsInsensitive: String
+  hex_startsWith: String
+  hex_not_startsWith: String
+  hex_endsWith: String
+  hex_not_endsWith: String
+  AND: [MetadataWhereInput!]
+  OR: [MetadataWhereInput!]
+}
+
+enum MetadataOrderByInput {
+  id_ASC
+  id_DESC
+  specName_ASC
+  specName_DESC
+  specVersion_ASC
+  specVersion_DESC
+  blockHeight_ASC
+  blockHeight_DESC
+  blockHash_ASC
+  blockHash_DESC
+  hex_ASC
+  hex_DESC
+}
+
+input WhereIdInput {
+  id: String!
+}
+
+type MetadataConnection {
+  edges: [MetadataEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MetadataEdge {
+  node: Metadata!
+  cursor: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+  endCursor: String!
+}
+
+type Block {
+  id: String!
+  height: Int!
+  hash: String!
+  parentHash: String!
+  stateRoot: String!
+  extrinsicsRoot: String!
+  timestamp: DateTime!
+  spec: Metadata!
+  validator: String
+  events(where: EventWhereInput orderBy: [EventOrderByInput!] offset: Int limit: Int): [Event!]!
+  calls(where: CallWhereInput orderBy: [CallOrderByInput!] offset: Int limit: Int): [Call!]!
+  extrinsics(where: ExtrinsicWhereInput orderBy: [ExtrinsicOrderByInput!] offset: Int limit: Int): [Extrinsic!]!
+}
+
+"A date-time string in simplified extended ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)"
+scalar DateTime
+
+type Event {
+  id: String!
+  block: Block!
+  indexInBlock: Int!
+  phase: String!
+  extrinsic: Extrinsic
+  call: Call
+  name: String!
+  args: JSON
+  pos: Int!
+}
+
+type Extrinsic {
+  id: String!
+  block: Block!
+  indexInBlock: Int!
+  version: Int!
+  signature: JSON
+  success: Boolean!
+  error: JSON
+  call: Call!
+  fee: Int
+  tip: Int
+  hash: String!
+  pos: Int!
+  calls(where: CallWhereInput orderBy: [CallOrderByInput!] offset: Int limit: Int): [Call!]!
+}
+
+"A scalar that can represent any JSON value"
+scalar JSON
+
+type Call {
+  id: String!
+  parent: Call
+  block: Block!
+  extrinsic: Extrinsic!
+  success: Boolean!
+  error: JSON
+  origin: JSON
+  name: String!
+  args: JSON
+  pos: Int!
+}
+
+input CallWhereInput {
+  id_isNull: Boolean
+  id_eq: String
+  id_not_eq: String
+  id_gt: String
+  id_gte: String
+  id_lt: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_not_contains: String
+  id_containsInsensitive: String
+  id_not_containsInsensitive: String
+  id_startsWith: String
+  id_not_startsWith: String
+  id_endsWith: String
+  id_not_endsWith: String
+  parent_isNull: Boolean
+  parent: CallWhereInput
+  block_isNull: Boolean
+  block: BlockWhereInput
+  extrinsic_isNull: Boolean
+  extrinsic: ExtrinsicWhereInput
+  success_isNull: Boolean
+  success_eq: Boolean
+  success_not_eq: Boolean
+  error_isNull: Boolean
+  error_eq: JSON
+  error_not_eq: JSON
+  error_jsonContains: JSON
+  error_jsonHasKey: JSON
+  origin_isNull: Boolean
+  origin_eq: JSON
+  origin_not_eq: JSON
+  origin_jsonContains: JSON
+  origin_jsonHasKey: JSON
+  name_isNull: Boolean
+  name_eq: String
+  name_not_eq: String
+  name_gt: String
+  name_gte: String
+  name_lt: String
+  name_lte: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_containsInsensitive: String
+  name_not_containsInsensitive: String
+  name_startsWith: String
+  name_not_startsWith: String
+  name_endsWith: String
+  name_not_endsWith: String
+  args_isNull: Boolean
+  args_eq: JSON
+  args_not_eq: JSON
+  args_jsonContains: JSON
+  args_jsonHasKey: JSON
+  pos_isNull: Boolean
+  pos_eq: Int
+  pos_not_eq: Int
+  pos_gt: Int
+  pos_gte: Int
+  pos_lt: Int
+  pos_lte: Int
+  pos_in: [Int!]
+  pos_not_in: [Int!]
+  AND: [CallWhereInput!]
+  OR: [CallWhereInput!]
+}
+
+input BlockWhereInput {
+  id_isNull: Boolean
+  id_eq: String
+  id_not_eq: String
+  id_gt: String
+  id_gte: String
+  id_lt: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_not_contains: String
+  id_containsInsensitive: String
+  id_not_containsInsensitive: String
+  id_startsWith: String
+  id_not_startsWith: String
+  id_endsWith: String
+  id_not_endsWith: String
+  height_isNull: Boolean
+  height_eq: Int
+  height_not_eq: Int
+  height_gt: Int
+  height_gte: Int
+  height_lt: Int
+  height_lte: Int
+  height_in: [Int!]
+  height_not_in: [Int!]
+  hash_isNull: Boolean
+  hash_eq: String
+  hash_not_eq: String
+  hash_gt: String
+  hash_gte: String
+  hash_lt: String
+  hash_lte: String
+  hash_in: [String!]
+  hash_not_in: [String!]
+  hash_contains: String
+  hash_not_contains: String
+  hash_containsInsensitive: String
+  hash_not_containsInsensitive: String
+  hash_startsWith: String
+  hash_not_startsWith: String
+  hash_endsWith: String
+  hash_not_endsWith: String
+  parentHash_isNull: Boolean
+  parentHash_eq: String
+  parentHash_not_eq: String
+  parentHash_gt: String
+  parentHash_gte: String
+  parentHash_lt: String
+  parentHash_lte: String
+  parentHash_in: [String!]
+  parentHash_not_in: [String!]
+  parentHash_contains: String
+  parentHash_not_contains: String
+  parentHash_containsInsensitive: String
+  parentHash_not_containsInsensitive: String
+  parentHash_startsWith: String
+  parentHash_not_startsWith: String
+  parentHash_endsWith: String
+  parentHash_not_endsWith: String
+  stateRoot_isNull: Boolean
+  stateRoot_eq: String
+  stateRoot_not_eq: String
+  stateRoot_gt: String
+  stateRoot_gte: String
+  stateRoot_lt: String
+  stateRoot_lte: String
+  stateRoot_in: [String!]
+  stateRoot_not_in: [String!]
+  stateRoot_contains: String
+  stateRoot_not_contains: String
+  stateRoot_containsInsensitive: String
+  stateRoot_not_containsInsensitive: String
+  stateRoot_startsWith: String
+  stateRoot_not_startsWith: String
+  stateRoot_endsWith: String
+  stateRoot_not_endsWith: String
+  extrinsicsRoot_isNull: Boolean
+  extrinsicsRoot_eq: String
+  extrinsicsRoot_not_eq: String
+  extrinsicsRoot_gt: String
+  extrinsicsRoot_gte: String
+  extrinsicsRoot_lt: String
+  extrinsicsRoot_lte: String
+  extrinsicsRoot_in: [String!]
+  extrinsicsRoot_not_in: [String!]
+  extrinsicsRoot_contains: String
+  extrinsicsRoot_not_contains: String
+  extrinsicsRoot_containsInsensitive: String
+  extrinsicsRoot_not_containsInsensitive: String
+  extrinsicsRoot_startsWith: String
+  extrinsicsRoot_not_startsWith: String
+  extrinsicsRoot_endsWith: String
+  extrinsicsRoot_not_endsWith: String
+  timestamp_isNull: Boolean
+  timestamp_eq: DateTime
+  timestamp_not_eq: DateTime
+  timestamp_gt: DateTime
+  timestamp_gte: DateTime
+  timestamp_lt: DateTime
+  timestamp_lte: DateTime
+  timestamp_in: [DateTime!]
+  timestamp_not_in: [DateTime!]
+  spec_isNull: Boolean
+  spec: MetadataWhereInput
+  validator_isNull: Boolean
+  validator_eq: String
+  validator_not_eq: String
+  validator_gt: String
+  validator_gte: String
+  validator_lt: String
+  validator_lte: String
+  validator_in: [String!]
+  validator_not_in: [String!]
+  validator_contains: String
+  validator_not_contains: String
+  validator_containsInsensitive: String
+  validator_not_containsInsensitive: String
+  validator_startsWith: String
+  validator_not_startsWith: String
+  validator_endsWith: String
+  validator_not_endsWith: String
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  calls_every: CallWhereInput
+  calls_some: CallWhereInput
+  calls_none: CallWhereInput
+  extrinsics_every: ExtrinsicWhereInput
+  extrinsics_some: ExtrinsicWhereInput
+  extrinsics_none: ExtrinsicWhereInput
+  AND: [BlockWhereInput!]
+  OR: [BlockWhereInput!]
+}
+
+input EventWhereInput {
+  id_isNull: Boolean
+  id_eq: String
+  id_not_eq: String
+  id_gt: String
+  id_gte: String
+  id_lt: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_not_contains: String
+  id_containsInsensitive: String
+  id_not_containsInsensitive: String
+  id_startsWith: String
+  id_not_startsWith: String
+  id_endsWith: String
+  id_not_endsWith: String
+  block_isNull: Boolean
+  block: BlockWhereInput
+  indexInBlock_isNull: Boolean
+  indexInBlock_eq: Int
+  indexInBlock_not_eq: Int
+  indexInBlock_gt: Int
+  indexInBlock_gte: Int
+  indexInBlock_lt: Int
+  indexInBlock_lte: Int
+  indexInBlock_in: [Int!]
+  indexInBlock_not_in: [Int!]
+  phase_isNull: Boolean
+  phase_eq: String
+  phase_not_eq: String
+  phase_gt: String
+  phase_gte: String
+  phase_lt: String
+  phase_lte: String
+  phase_in: [String!]
+  phase_not_in: [String!]
+  phase_contains: String
+  phase_not_contains: String
+  phase_containsInsensitive: String
+  phase_not_containsInsensitive: String
+  phase_startsWith: String
+  phase_not_startsWith: String
+  phase_endsWith: String
+  phase_not_endsWith: String
+  extrinsic_isNull: Boolean
+  extrinsic: ExtrinsicWhereInput
+  call_isNull: Boolean
+  call: CallWhereInput
+  name_isNull: Boolean
+  name_eq: String
+  name_not_eq: String
+  name_gt: String
+  name_gte: String
+  name_lt: String
+  name_lte: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_not_contains: String
+  name_containsInsensitive: String
+  name_not_containsInsensitive: String
+  name_startsWith: String
+  name_not_startsWith: String
+  name_endsWith: String
+  name_not_endsWith: String
+  args_isNull: Boolean
+  args_eq: JSON
+  args_not_eq: JSON
+  args_jsonContains: JSON
+  args_jsonHasKey: JSON
+  pos_isNull: Boolean
+  pos_eq: Int
+  pos_not_eq: Int
+  pos_gt: Int
+  pos_gte: Int
+  pos_lt: Int
+  pos_lte: Int
+  pos_in: [Int!]
+  pos_not_in: [Int!]
+  AND: [EventWhereInput!]
+  OR: [EventWhereInput!]
+}
+
+input ExtrinsicWhereInput {
+  id_isNull: Boolean
+  id_eq: String
+  id_not_eq: String
+  id_gt: String
+  id_gte: String
+  id_lt: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_not_contains: String
+  id_containsInsensitive: String
+  id_not_containsInsensitive: String
+  id_startsWith: String
+  id_not_startsWith: String
+  id_endsWith: String
+  id_not_endsWith: String
+  block_isNull: Boolean
+  block: BlockWhereInput
+  indexInBlock_isNull: Boolean
+  indexInBlock_eq: Int
+  indexInBlock_not_eq: Int
+  indexInBlock_gt: Int
+  indexInBlock_gte: Int
+  indexInBlock_lt: Int
+  indexInBlock_lte: Int
+  indexInBlock_in: [Int!]
+  indexInBlock_not_in: [Int!]
+  version_isNull: Boolean
+  version_eq: Int
+  version_not_eq: Int
+  version_gt: Int
+  version_gte: Int
+  version_lt: Int
+  version_lte: Int
+  version_in: [Int!]
+  version_not_in: [Int!]
+  signature_isNull: Boolean
+  signature_eq: JSON
+  signature_not_eq: JSON
+  signature_jsonContains: JSON
+  signature_jsonHasKey: JSON
+  success_isNull: Boolean
+  success_eq: Boolean
+  success_not_eq: Boolean
+  error_isNull: Boolean
+  error_eq: JSON
+  error_not_eq: JSON
+  error_jsonContains: JSON
+  error_jsonHasKey: JSON
+  call_isNull: Boolean
+  call: CallWhereInput
+  fee_isNull: Boolean
+  fee_eq: Int
+  fee_not_eq: Int
+  fee_gt: Int
+  fee_gte: Int
+  fee_lt: Int
+  fee_lte: Int
+  fee_in: [Int!]
+  fee_not_in: [Int!]
+  tip_isNull: Boolean
+  tip_eq: Int
+  tip_not_eq: Int
+  tip_gt: Int
+  tip_gte: Int
+  tip_lt: Int
+  tip_lte: Int
+  tip_in: [Int!]
+  tip_not_in: [Int!]
+  hash_isNull: Boolean
+  hash_eq: String
+  hash_not_eq: String
+  hash_gt: String
+  hash_gte: String
+  hash_lt: String
+  hash_lte: String
+  hash_in: [String!]
+  hash_not_in: [String!]
+  hash_contains: String
+  hash_not_contains: String
+  hash_containsInsensitive: String
+  hash_not_containsInsensitive: String
+  hash_startsWith: String
+  hash_not_startsWith: String
+  hash_endsWith: String
+  hash_not_endsWith: String
+  pos_isNull: Boolean
+  pos_eq: Int
+  pos_not_eq: Int
+  pos_gt: Int
+  pos_gte: Int
+  pos_lt: Int
+  pos_lte: Int
+  pos_in: [Int!]
+  pos_not_in: [Int!]
+  calls_every: CallWhereInput
+  calls_some: CallWhereInput
+  calls_none: CallWhereInput
+  AND: [ExtrinsicWhereInput!]
+  OR: [ExtrinsicWhereInput!]
+}
+
+enum CallOrderByInput {
+  id_ASC
+  id_DESC
+  parent_id_ASC
+  parent_id_DESC
+  parent_success_ASC
+  parent_success_DESC
+  parent_name_ASC
+  parent_name_DESC
+  parent_pos_ASC
+  parent_pos_DESC
+  block_id_ASC
+  block_id_DESC
+  block_height_ASC
+  block_height_DESC
+  block_hash_ASC
+  block_hash_DESC
+  block_parentHash_ASC
+  block_parentHash_DESC
+  block_stateRoot_ASC
+  block_stateRoot_DESC
+  block_extrinsicsRoot_ASC
+  block_extrinsicsRoot_DESC
+  block_timestamp_ASC
+  block_timestamp_DESC
+  block_validator_ASC
+  block_validator_DESC
+  extrinsic_id_ASC
+  extrinsic_id_DESC
+  extrinsic_indexInBlock_ASC
+  extrinsic_indexInBlock_DESC
+  extrinsic_version_ASC
+  extrinsic_version_DESC
+  extrinsic_success_ASC
+  extrinsic_success_DESC
+  extrinsic_fee_ASC
+  extrinsic_fee_DESC
+  extrinsic_tip_ASC
+  extrinsic_tip_DESC
+  extrinsic_hash_ASC
+  extrinsic_hash_DESC
+  extrinsic_pos_ASC
+  extrinsic_pos_DESC
+  success_ASC
+  success_DESC
+  name_ASC
+  name_DESC
+  pos_ASC
+  pos_DESC
+}
+
+enum EventOrderByInput {
+  id_ASC
+  id_DESC
+  block_id_ASC
+  block_id_DESC
+  block_height_ASC
+  block_height_DESC
+  block_hash_ASC
+  block_hash_DESC
+  block_parentHash_ASC
+  block_parentHash_DESC
+  block_stateRoot_ASC
+  block_stateRoot_DESC
+  block_extrinsicsRoot_ASC
+  block_extrinsicsRoot_DESC
+  block_timestamp_ASC
+  block_timestamp_DESC
+  block_validator_ASC
+  block_validator_DESC
+  indexInBlock_ASC
+  indexInBlock_DESC
+  phase_ASC
+  phase_DESC
+  extrinsic_id_ASC
+  extrinsic_id_DESC
+  extrinsic_indexInBlock_ASC
+  extrinsic_indexInBlock_DESC
+  extrinsic_version_ASC
+  extrinsic_version_DESC
+  extrinsic_success_ASC
+  extrinsic_success_DESC
+  extrinsic_fee_ASC
+  extrinsic_fee_DESC
+  extrinsic_tip_ASC
+  extrinsic_tip_DESC
+  extrinsic_hash_ASC
+  extrinsic_hash_DESC
+  extrinsic_pos_ASC
+  extrinsic_pos_DESC
+  call_id_ASC
+  call_id_DESC
+  call_success_ASC
+  call_success_DESC
+  call_name_ASC
+  call_name_DESC
+  call_pos_ASC
+  call_pos_DESC
+  name_ASC
+  name_DESC
+  pos_ASC
+  pos_DESC
+}
+
+enum ExtrinsicOrderByInput {
+  id_ASC
+  id_DESC
+  block_id_ASC
+  block_id_DESC
+  block_height_ASC
+  block_height_DESC
+  block_hash_ASC
+  block_hash_DESC
+  block_parentHash_ASC
+  block_parentHash_DESC
+  block_stateRoot_ASC
+  block_stateRoot_DESC
+  block_extrinsicsRoot_ASC
+  block_extrinsicsRoot_DESC
+  block_timestamp_ASC
+  block_timestamp_DESC
+  block_validator_ASC
+  block_validator_DESC
+  indexInBlock_ASC
+  indexInBlock_DESC
+  version_ASC
+  version_DESC
+  success_ASC
+  success_DESC
+  call_id_ASC
+  call_id_DESC
+  call_success_ASC
+  call_success_DESC
+  call_name_ASC
+  call_name_DESC
+  call_pos_ASC
+  call_pos_DESC
+  fee_ASC
+  fee_DESC
+  tip_ASC
+  tip_DESC
+  hash_ASC
+  hash_DESC
+  pos_ASC
+  pos_DESC
+}
+
+enum BlockOrderByInput {
+  id_ASC
+  id_DESC
+  height_ASC
+  height_DESC
+  hash_ASC
+  hash_DESC
+  parentHash_ASC
+  parentHash_DESC
+  stateRoot_ASC
+  stateRoot_DESC
+  extrinsicsRoot_ASC
+  extrinsicsRoot_DESC
+  timestamp_ASC
+  timestamp_DESC
+  spec_id_ASC
+  spec_id_DESC
+  spec_specName_ASC
+  spec_specName_DESC
+  spec_specVersion_ASC
+  spec_specVersion_DESC
+  spec_blockHeight_ASC
+  spec_blockHeight_DESC
+  spec_blockHash_ASC
+  spec_blockHash_DESC
+  spec_hex_ASC
+  spec_hex_DESC
+  validator_ASC
+  validator_DESC
+}
+
+type BlocksConnection {
+  edges: [BlockEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type BlockEdge {
+  node: Block!
+  cursor: String!
+}
+
+type CallsConnection {
+  edges: [CallEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CallEdge {
+  node: Call!
+  cursor: String!
+}
+
+type EventsConnection {
+  edges: [EventEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type EventEdge {
+  node: Event!
+  cursor: String!
+}
+
+type ExtrinsicsConnection {
+  edges: [ExtrinsicEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ExtrinsicEdge {
+  node: Extrinsic!
+  cursor: String!
+}

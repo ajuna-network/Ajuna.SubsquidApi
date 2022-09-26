@@ -1,0 +1,32 @@
+is_global = true
+build_property.StrawberryShake_DefaultNamespace = Ajuna.SubsquidApi.Console
+build_property.StrawberryShake_LogFile = 
+build_property.StrawberryShake_BuildDirectory = /Users/dimitriospaxinos/.nuget/packages/strawberryshake.codegeneration.csharp.analyzers/12.14.0/build/../analyzers/dotnet/cs
+build_property.StrawberryShake_PersistedQueryDirectory = 
+build_property.StrawberryShake_State = obj/berry
+build_property.StrawberryShake_EmitGeneratedCode = 
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Ajuna.SubsquidApi.Console
+build_property.ProjectDir = /Users/dimitriospaxinos/Documents/Development/Ajuna/Ajuna.SubsquidApi/Ajuna.SubsquidApi.Console/
+
+[/Users/dimitriospaxinos/Documents/Development/Ajuna/Ajuna.SubsquidApi/Ajuna.SubsquidApi.Console/GetBlocks.graphql]
+build_metadata.AdditionalFiles.GraphQL = true
+build_metadata.AdditionalFiles.GraphQLConfig = 
+
+[/Users/dimitriospaxinos/Documents/Development/Ajuna/Ajuna.SubsquidApi/Ajuna.SubsquidApi.Console/schema.extensions.graphql]
+build_metadata.AdditionalFiles.GraphQL = true
+build_metadata.AdditionalFiles.GraphQLConfig = 
+
+[/Users/dimitriospaxinos/Documents/Development/Ajuna/Ajuna.SubsquidApi/Ajuna.SubsquidApi.Console/schema.graphql]
+build_metadata.AdditionalFiles.GraphQL = true
+build_metadata.AdditionalFiles.GraphQLConfig = 
+
+[/Users/dimitriospaxinos/Documents/Development/Ajuna/Ajuna.SubsquidApi/Ajuna.SubsquidApi.Console/.graphqlrc.json]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true

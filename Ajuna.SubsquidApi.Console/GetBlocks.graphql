@@ -1,0 +1,5 @@
+query GetFirstTenBlocks  {
+  blocks(limit: 10) {
+    id
+  }
+}
