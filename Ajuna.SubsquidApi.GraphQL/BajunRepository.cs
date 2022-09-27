@@ -1,6 +1,7 @@
 using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
 using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
@@ -10,51 +11,67 @@ namespace Ajuna.SubsquidApi.GraphQL;
 public class BajunRepository
 {
     private readonly GraphQLHttpClient _client;
+    private readonly JsonSerializerSettings _jsonSerializerSettings;
 
-    public BajunRepository(GraphQLHttpClient client)
+    public BajunRepository(string endPointUrl)
     {
-        _client = client;
+        _jsonSerializerSettings = new JsonSerializerSettings
+            {ContractResolver = new CamelCasePropertyNamesContractResolver()};
+        _client = new GraphQLHttpClient(endPointUrl,new NewtonsoftJsonSerializer(_jsonSerializerSettings));
+    }
+    
+    public Task<List<SubsquidEvent<T>>> GetEventsRequest<T>(GraphQLRequest request)
+    {
+        return GetMany<SubsquidEvent<T>>(request);
     }
 
-    // public async Task<List<BalanceTransfer>> GetBalanceTransfers(int limit = 100)
-    // {
-    //     var settings = new JsonSerializerSettings
-    //         {ContractResolver = new CamelCasePropertyNamesContractResolver()};
-    //
-    //     var request = GetEventsByName("Balances.Transfer", limit);
-    //
-    //     var graphQLResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
-    //     var data = graphQLResponse.Data as JObject;
-    //     
-    //     var payload = GetJArrayValue(data, "events");
-    //
-    //     var events =
-    //         JsonConvert.DeserializeObject<List<SubsquidEvent>>(payload , settings);
-    //     
-    //
-    //     var balanceTransfers = events.Select(x =>  x.Args.ToObject<BalanceTransfer>()).ToList();
-    //
-    //     return balanceTransfers;
-    // }
-    
-    public async Task<List<SubsquidEvent<T>>> GetEvents<T>(int limit = 100)
+    public  Task<List<SubsquidEvent<T>>> GetBalanceTransferEvents<T>(int limit = 100)
     {
-        var settings = new JsonSerializerSettings
-            {ContractResolver = new CamelCasePropertyNamesContractResolver()};
-
         var request = GetEventsByName("Balances.Transfer", limit);
+        return GetEventsRequest<T>(request);
+    }
+    
+    public  Task<SubsquidEvent<T>> GetEventById<T>(string id)
+    {
+        var request = GetEventById(id);
 
+        return Get<SubsquidEvent<T>>(request);
+    }
+
+    public Task<Block<T>> GetBlockById<T>(string id)
+    {
+        var request = GetBlockByIdRequest(id);
+        return Get<Block<T>>(request);
+    }
+    
+    public async Task<TSquidType> Get<TSquidType>(GraphQLRequest request) 
+        where  TSquidType : ModelBase 
+    {
         var graphQLResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
         var data = graphQLResponse.Data as JObject;
         
-        var payload = GetJArrayValue(data, "events");
+        var payload = GetJArrayValue(data, request.OperationName);
+        var @event =
+            JsonConvert.DeserializeObject<TSquidType>(payload , _jsonSerializerSettings);
+        
+        return @event;
+    }
+    
+    public async Task<List<TSquidType>> GetMany<TSquidType>(GraphQLRequest request)
+        where  TSquidType : ModelBase 
+    {
+        var graphQlResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
+        var data = graphQlResponse.Data as JObject;
+        
+        var payload = GetJArrayValue(data, request.OperationName);
  
         var events =
-            JsonConvert.DeserializeObject<List<SubsquidEvent<T>>>(payload , settings);
+            JsonConvert.DeserializeObject<List<TSquidType>>(payload , _jsonSerializerSettings);
         
         return events;
-        
     }
+    
+    
 
     private GraphQLRequest GetEventsByName(string name, int limit = 100)
     {
@@ -65,15 +82,84 @@ public class BajunRepository
             id
             name
             args
-            }
-        }",
+           block {
+                id
+                }
+                }
+                }",
             Variables = new
             {
                 name = name,
                 limit = limit
-            }
+            }, OperationName = "events"
         };
     }
+
+    
+    
+    private GraphQLRequest GetBlockById(string id)
+    {
+        
+         return new GraphQLRequest
+        {
+            Query = @"query GetBlockById($id: String!)  {
+                   blockById(id: $id) {
+                      id
+                      height
+                      hash
+                      extrinsicsRoot
+                    }
+                }",
+            // OperationName = "PersonAndFilms",
+            Variables = new
+            {
+                id = id
+            },OperationName = "blockById"
+        };
+        
+    }
+    
+    private GraphQLRequest GetEventById(string id)
+    {
+        return new GraphQLRequest
+        {
+            Query = @"query GetEventById($id: String!) {
+              eventById(id: $id) {
+                        id
+                        name
+                        args
+                    }
+                }",
+           Variables = new
+            {
+                id = id,
+            },
+           OperationName = "eventById"
+        };
+    }
+
+    private GraphQLRequest GetBlockByIdRequest(string id)
+    {
+        var blockByIdRequest = new GraphQLRequest()
+        {
+            Query = @"query MyQuery($id: String!) {
+              blockById(id: $id) {
+                id
+              events {
+                  name
+                  args
+                }
+              }
+            }", 
+            OperationName = "blockById",
+            Variables = new
+            {
+                id = id
+            }
+        };
+        return blockByIdRequest;
+    }
+
 
 
     private string GetJArrayValue(JObject yourJArray, string key)

@@ -5,7 +5,7 @@ public class Block<T> : ModelBase
     public int? Height { get; set; }
     public string? Hash { get; set; }
     public string? ParentHash { get; set; }
-    public long? TimeStamp { get; set; }    
+    public string? TimeStamp { get; set; }    
     public Metadata? Spec { get; set; }
     public string? Validator { get; set; }
 

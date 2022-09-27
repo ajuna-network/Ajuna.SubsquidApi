@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajuna.SubsquidApi.Console", "Ajuna.SubsquidApi.Console\Ajuna.SubsquidApi.Console.csproj", "{8A63F0A1-CB13-407E-8FA7-21268F6F1186}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajuna.SubsquidApi.GraphQL", "Ajuna.SubsquidApi.GraphQL\Ajuna.SubsquidApi.GraphQL.csproj", "{3969B4C8-FD1C-4C5B-88DB-5EF1D3345764}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8A63F0A1-CB13-407E-8FA7-21268F6F1186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A63F0A1-CB13-407E-8FA7-21268F6F1186}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A63F0A1-CB13-407E-8FA7-21268F6F1186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3969B4C8-FD1C-4C5B-88DB-5EF1D3345764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3969B4C8-FD1C-4C5B-88DB-5EF1D3345764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3969B4C8-FD1C-4C5B-88DB-5EF1D3345764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3969B4C8-FD1C-4C5B-88DB-5EF1D3345764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

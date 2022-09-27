@@ -1,72 +1,66 @@
 ﻿using Ajuna.SubsquidApi.GraphQL;
 using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
-using GraphQL.Client.Http;
-using GraphQL.Client.Serializer.Newtonsoft;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
+
+// Instantiate Repository
+var repo = new BajunRepository("https://bajun.explorer.subsquid.io/graphql");
+
+// Get Balance Transfer Events
+// var s = await repo.GetBalanceTransferEvents<BalanceTransfer>();
 
 
+// Get Event by Id 
+// var sss = await repo.GetEventById<BalanceTransfer>("0000312575-000005-f6531");
 
-var settings = new JsonSerializerSettings
-    {ContractResolver = new CamelCasePropertyNamesContractResolver()};
+//Console.ReadLine();
 
-var serializer = new NewtonsoftJsonSerializer(settings);
-var graphQLClient = new GraphQLHttpClient("https://bajun.explorer.subsquid.io/graphql", serializer);
+// Get Block by Id 
+var block = await repo.GetBlockById<dynamic>("0000312575-f6531");
 
+// Get only Balance Transfer Events
 
-var repo = new BajunRepository(graphQLClient);
-
-var s = await repo.GetEvents<BalanceTransfer>();
-
-
+var balanceTransferEvents = block.Events.Where(x => x.Name == "Balances.Transfer").ToList();
 
 
-var bajunRequest = new GraphQLRequest
+var blockRequest = new GraphQLRequest()
 {
-    Query = @"query GetBlockById($id: String!)  {
-   blockById(id: $id) {
-      id
-      height
-      hash
-      extrinsicsRoot
-    }
+  Query = @"query MyQuery {
+  blocks(limit: 10) {
+    hash
+    height
+    id
+    timestamp
+    events {
+          args
+        }
+  }
 }",
-    // OperationName = "PersonAndFilms",
-    Variables = new
-    {
-        id = "0000000000-35a06"
-    }
+  OperationName = "blocks"
 };
 
+// Get top ten blocks
+//var blocks = await repo.GetMany<Block<dynamic>>(blockRequest);
 
-var graphQLResponse = await graphQLClient.SendQueryAsync<dynamic>(bajunRequest, CancellationToken.None);
-var ss = graphQLResponse.Data as JObject;
-
-var hssh = GetJArrayValue(ss, "blockById");
-var json = JsonConvert.DeserializeObject<Block<dynamic>>(hssh, settings);
 
 
 //
+// var callsRequest = new GraphQLRequest()
+//     {
+//         Query = @"query MyQuery {
+//           calls(limit: 10, orderBy: block_height_DESC, where: {success_eq: true}) {
+//             args
+//             success
+//             name
+//             origin        
+//           }
+//         }",
+//         OperationName = "calls"
+//     };
 //
-// Console.WriteLine(ss.ToString());
-
-//
-// var graphQLResponse = await graphQLClient.SendQueryAsync<ResponseType>(bajunRequest);
-//
-// var personName = graphQLResponse.Data.Person.Name;
-
-//Console.WriteLine(personName);
+// var calls = await repo.GetMany<Call<JObject>>(callsRequest);
 
 Console.ReadLine();
 
 
-static string GetJArrayValue(JObject yourJArray, string key)
-{
-    foreach (KeyValuePair<string, JToken> keyValuePair in yourJArray)
-        if (key == keyValuePair.Key)
-            return keyValuePair.Value.ToString();
-
-    return null;
-}
+// Block that includes Balance Transfer
+//"0000312575-f6531"
