@@ -1,18 +1,32 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+using Ajuna.SubsquidApi.GraphQL;
+using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
-using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
-Console.WriteLine("Hello, World!");
 
 
-var graphQLClient = new GraphQLHttpClient("https://bajun.explorer.subsquid.io/graphql", new NewtonsoftJsonSerializer());
+var settings = new JsonSerializerSettings
+    {ContractResolver = new CamelCasePropertyNamesContractResolver()};
 
-var bajunRequest = new GraphQLRequest {
-    Query =@"query GetBlockById($id: String!)  {
+var serializer = new NewtonsoftJsonSerializer(settings);
+var graphQLClient = new GraphQLHttpClient("https://bajun.explorer.subsquid.io/graphql", serializer);
+
+
+var repo = new BajunRepository(graphQLClient);
+
+var s = await repo.GetBalanceTransfers();
+
+
+
+
+var bajunRequest = new GraphQLRequest
+{
+    Query = @"query GetBlockById($id: String!)  {
    blockById(id: $id) {
       id
       height
@@ -21,19 +35,23 @@ var bajunRequest = new GraphQLRequest {
     }
 }",
     // OperationName = "PersonAndFilms",
-    Variables = new {
+    Variables = new
+    {
         id = "0000000000-35a06"
     }
 };
 
 
 var graphQLResponse = await graphQLClient.SendQueryAsync<dynamic>(bajunRequest, CancellationToken.None);
- var ss = graphQLResponse.Data as JObject;
+var ss = graphQLResponse.Data as JObject;
 
-var hssh = GetJArrayValue(ss, "@hash");
+var hssh = GetJArrayValue(ss, "blockById");
+var json = JsonConvert.DeserializeObject<Block>(hssh, settings);
 
 
-Console.WriteLine();
+//
+//
+// Console.WriteLine(ss.ToString());
 
 //
 // var graphQLResponse = await graphQLClient.SendQueryAsync<ResponseType>(bajunRequest);
@@ -48,36 +66,8 @@ Console.ReadLine();
 static string GetJArrayValue(JObject yourJArray, string key)
 {
     foreach (KeyValuePair<string, JToken> keyValuePair in yourJArray)
-    {
         if (key == keyValuePair.Key)
-        {
             return keyValuePair.Value.ToString();
-        }
-    }
 
     return null;
 }
-
-
-
-
-
-public class ResponseType 
-{
-    public PersonType Person { get; set; }
-}
-
-public class PersonType 
-{
-    public string Name { get; set; }
-    public FilmConnectionType FilmConnection { get; set; }    
-}
-
-public class FilmConnectionType {
-    public List<FilmContentType> Films { get; set; }    
-}
-
-public class FilmContentType {
-    public string Title { get; set; }
-}
-

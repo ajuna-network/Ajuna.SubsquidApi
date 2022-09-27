@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Linq;
+
 namespace Ajuna.SubsquidApi.GraphQL.Models;
 
 public class SubsquidEvent : ModelBase
@@ -8,6 +10,6 @@ public class SubsquidEvent : ModelBase
     public string? Name { get; set; }
     public Extrinsic Extrinsic { get; set; }
     public Call Call { get; set; }
-    public string Args { get; set; }
+    public JObject Args { get; set; }
     public int? Pos { get; set; }
 }
