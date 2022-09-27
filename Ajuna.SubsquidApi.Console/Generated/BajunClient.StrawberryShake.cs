@@ -4,6 +4,167 @@
 namespace Ajuna.SubsquidApi.Console
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdResult : global::System.IEquatable<GetBlockByIdResult>, IGetBlockByIdResult
+    {
+        public GetBlockByIdResult(global::Ajuna.SubsquidApi.Console.IGetBlockById_BlockById? blockById)
+        {
+            BlockById = blockById;
+        }
+
+        public global::Ajuna.SubsquidApi.Console.IGetBlockById_BlockById? BlockById { get; }
+
+        public virtual global::System.Boolean Equals(GetBlockByIdResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((BlockById is null && other.BlockById is null) || BlockById != null && BlockById.Equals(other.BlockById)));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetBlockByIdResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (BlockById != null)
+                {
+                    hash ^= 397 * BlockById.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockById_BlockById_Block : global::System.IEquatable<GetBlockById_BlockById_Block>, IGetBlockById_BlockById_Block
+    {
+        public GetBlockById_BlockById_Block(global::System.String id, global::System.Int32 height, global::System.String hash, global::System.String extrinsicsRoot)
+        {
+            Id = id;
+            Height = height;
+            Hash = hash;
+            ExtrinsicsRoot = extrinsicsRoot;
+        }
+
+        public global::System.String Id { get; }
+
+        public global::System.Int32 Height { get; }
+
+        public global::System.String Hash { get; }
+
+        public global::System.String ExtrinsicsRoot { get; }
+
+        public virtual global::System.Boolean Equals(GetBlockById_BlockById_Block? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && Height == other.Height && Hash.Equals(other.Hash) && ExtrinsicsRoot.Equals(other.ExtrinsicsRoot);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetBlockById_BlockById_Block)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * Height.GetHashCode();
+                hash ^= 397 * Hash.GetHashCode();
+                hash ^= 397 * ExtrinsicsRoot.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetBlockByIdResult
+    {
+        public global::Ajuna.SubsquidApi.Console.IGetBlockById_BlockById? BlockById { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetBlockById_BlockById
+    {
+        public global::System.String Id { get; }
+
+        public global::System.Int32 Height { get; }
+
+        public global::System.String Hash { get; }
+
+        public global::System.String ExtrinsicsRoot { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetBlockById_BlockById_Block : IGetBlockById_BlockById
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial class GetFirstTenBlocksResult : global::System.IEquatable<GetFirstTenBlocksResult>, IGetFirstTenBlocksResult
     {
         public GetFirstTenBlocksResult(global::System.Collections.Generic.IReadOnlyList<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocks_Blocks> blocks)
@@ -146,6 +307,302 @@ namespace Ajuna.SubsquidApi.Console
     {
     }
 
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameResult : global::System.IEquatable<GetEventsByNameResult>, IGetEventsByNameResult
+    {
+        public GetEventsByNameResult(global::System.Collections.Generic.IReadOnlyList<global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events> events)
+        {
+            Events = events;
+        }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events> Events { get; }
+
+        public virtual global::System.Boolean Equals(GetEventsByNameResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Events, other.Events));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetEventsByNameResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                foreach (var Events_elm in Events)
+                {
+                    hash ^= 397 * Events_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByName_Events_Event : global::System.IEquatable<GetEventsByName_Events_Event>, IGetEventsByName_Events_Event
+    {
+        public GetEventsByName_Events_Event(global::System.String name, global::System.String id, global::System.Int32 indexInBlock, global::System.String? args)
+        {
+            Name = name;
+            Id = id;
+            IndexInBlock = indexInBlock;
+            Args = args;
+        }
+
+        public global::System.String Name { get; }
+
+        public global::System.String Id { get; }
+
+        public global::System.Int32 IndexInBlock { get; }
+
+        public global::System.String? Args { get; }
+
+        public virtual global::System.Boolean Equals(GetEventsByName_Events_Event? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Name.Equals(other.Name)) && Id.Equals(other.Id) && IndexInBlock == other.IndexInBlock && ((Args is null && other.Args is null) || Args != null && Args.Equals(other.Args));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetEventsByName_Events_Event)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Name.GetHashCode();
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * IndexInBlock.GetHashCode();
+                if (Args != null)
+                {
+                    hash ^= 397 * Args.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetEventsByNameResult
+    {
+        public global::System.Collections.Generic.IReadOnlyList<global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events> Events { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetEventsByName_Events
+    {
+        public global::System.String Name { get; }
+
+        public global::System.String Id { get; }
+
+        public global::System.Int32 IndexInBlock { get; }
+
+        public global::System.String? Args { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetEventsByName_Events_Event : IGetEventsByName_Events
+    {
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetBlockById GraphQL operation
+    /// <code>
+    /// query GetBlockById($id: String!) {
+    ///   blockById(id: $id) {
+    ///     __typename
+    ///     id
+    ///     height
+    ///     hash
+    ///     extrinsicsRoot
+    ///     ... on Block {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GetBlockByIdQueryDocument()
+        {
+        }
+
+        public static GetBlockByIdQueryDocument Instance { get; } = new GetBlockByIdQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x42, 0x79, 0x49, 0x64, 0x28, 0x24, 0x69, 0x64, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x42, 0x79, 0x49, 0x64, 0x28, 0x69, 0x64, 0x3a, 0x20, 0x24, 0x69, 0x64, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x20, 0x68, 0x61, 0x73, 0x68, 0x20, 0x65, 0x78, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x73, 0x52, 0x6f, 0x6f, 0x74, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "ea5522efc59ef0a1f0aa18396bd929cc");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetBlockById GraphQL operation
+    /// <code>
+    /// query GetBlockById($id: String!) {
+    ///   blockById(id: $id) {
+    ///     __typename
+    ///     id
+    ///     height
+    ///     hash
+    ///     extrinsicsRoot
+    ///     ... on Block {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdQuery : global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGetBlockByIdResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public GetBlockByIdQuery(global::StrawberryShake.IOperationExecutor<IGetBlockByIdResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetBlockByIdResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBlockByIdResult>> ExecuteAsync(global::System.String id, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(id);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBlockByIdResult>> Watch(global::System.String id, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(id);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String id)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("id", FormatId(id));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GetBlockByIdQueryDocument.Instance.Hash.Value, name: "GetBlockById", document: GetBlockByIdQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatId(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetBlockById GraphQL operation
+    /// <code>
+    /// query GetBlockById($id: String!) {
+    ///   blockById(id: $id) {
+    ///     __typename
+    ///     id
+    ///     height
+    ///     hash
+    ///     extrinsicsRoot
+    ///     ... on Block {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetBlockByIdQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBlockByIdResult>> ExecuteAsync(global::System.String id, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBlockByIdResult>> Watch(global::System.String id, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
     /// <summary>
     /// Represents the operation service of the GetFirstTenBlocks GraphQL operation
     /// <code>
@@ -255,19 +712,164 @@ namespace Ajuna.SubsquidApi.Console
     }
 
     /// <summary>
+    /// Represents the operation service of the GetEventsByName GraphQL operation
+    /// <code>
+    /// query GetEventsByName($name: String!, $limit: Int!) {
+    ///   events(limit: $limit, where: { name_eq: $name }) {
+    ///     __typename
+    ///     name
+    ///     id
+    ///     indexInBlock
+    ///     args
+    ///     ... on Event {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameQueryDocument : global::StrawberryShake.IDocument
+    {
+        private GetEventsByNameQueryDocument()
+        {
+        }
+
+        public static GetEventsByNameQueryDocument Instance { get; } = new GetEventsByNameQueryDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x28, 0x24, 0x6e, 0x61, 0x6d, 0x65, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x2c, 0x20, 0x24, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x3a, 0x20, 0x49, 0x6e, 0x74, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x28, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x3a, 0x20, 0x24, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x2c, 0x20, 0x77, 0x68, 0x65, 0x72, 0x65, 0x3a, 0x20, 0x7b, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x65, 0x71, 0x3a, 0x20, 0x24, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x7d, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x69, 0x64, 0x20, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x49, 0x6e, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x20, 0x61, 0x72, 0x67, 0x73, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "5f3e603cbdc0ab31497548d6e7565fdb");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetEventsByName GraphQL operation
+    /// <code>
+    /// query GetEventsByName($name: String!, $limit: Int!) {
+    ///   events(limit: $limit, where: { name_eq: $name }) {
+    ///     __typename
+    ///     name
+    ///     id
+    ///     indexInBlock
+    ///     args
+    ///     ... on Event {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameQuery : global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IGetEventsByNameResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _intFormatter;
+        public GetEventsByNameQuery(global::StrawberryShake.IOperationExecutor<IGetEventsByNameResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+            _intFormatter = serializerResolver.GetInputValueFormatter("Int");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetEventsByNameResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetEventsByNameResult>> ExecuteAsync(global::System.String name, global::System.Int32 limit, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(name, limit);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetEventsByNameResult>> Watch(global::System.String name, global::System.Int32 limit, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(name, limit);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String name, global::System.Int32 limit)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("name", FormatName(name));
+            variables.Add("limit", FormatLimit(limit));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: GetEventsByNameQueryDocument.Instance.Hash.Value, name: "GetEventsByName", document: GetEventsByNameQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatName(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatLimit(global::System.Int32 value)
+        {
+            return _intFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the GetEventsByName GraphQL operation
+    /// <code>
+    /// query GetEventsByName($name: String!, $limit: Int!) {
+    ///   events(limit: $limit, where: { name_eq: $name }) {
+    ///     __typename
+    ///     name
+    ///     id
+    ///     indexInBlock
+    ///     args
+    ///     ... on Event {
+    ///       id
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial interface IGetEventsByNameQuery : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetEventsByNameResult>> ExecuteAsync(global::System.String name, global::System.Int32 limit, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetEventsByNameResult>> Watch(global::System.String name, global::System.Int32 limit, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the BajunClient GraphQL client
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial class BajunClient : global::Ajuna.SubsquidApi.Console.IBajunClient
     {
+        private readonly global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery _getBlockById;
         private readonly global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery _getFirstTenBlocks;
-        public BajunClient(global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery getFirstTenBlocks)
+        private readonly global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery _getEventsByName;
+        public BajunClient(global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery getBlockById, global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery getFirstTenBlocks, global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery getEventsByName)
         {
+            _getBlockById = getBlockById ?? throw new global::System.ArgumentNullException(nameof(getBlockById));
             _getFirstTenBlocks = getFirstTenBlocks ?? throw new global::System.ArgumentNullException(nameof(getFirstTenBlocks));
+            _getEventsByName = getEventsByName ?? throw new global::System.ArgumentNullException(nameof(getEventsByName));
         }
 
         public static global::System.String ClientName => "BajunClient";
+        public global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery GetBlockById => _getBlockById;
         public global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery GetFirstTenBlocks => _getFirstTenBlocks;
+        public global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery GetEventsByName => _getEventsByName;
     }
 
     /// <summary>
@@ -276,7 +878,11 @@ namespace Ajuna.SubsquidApi.Console
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial interface IBajunClient
     {
+        global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery GetBlockById { get; }
+
         global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery GetFirstTenBlocks { get; }
+
+        global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery GetEventsByName { get; }
     }
 }
 
@@ -285,12 +891,131 @@ namespace Ajuna.SubsquidApi.Console.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial class BlockEntity
     {
-        public BlockEntity(global::System.String id = default !)
+        public BlockEntity(global::System.String id = default !, global::System.Int32 height = default !, global::System.String hash = default !, global::System.String extrinsicsRoot = default !)
         {
             Id = id;
+            Height = height;
+            Hash = hash;
+            ExtrinsicsRoot = extrinsicsRoot;
         }
 
         public global::System.String Id { get; }
+
+        public global::System.Int32 Height { get; }
+
+        public global::System.String Hash { get; }
+
+        public global::System.String ExtrinsicsRoot { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class EventEntity
+    {
+        public EventEntity(global::System.String name = default !, global::System.String id = default !, global::System.Int32 indexInBlock = default !, global::System.String? args = default !)
+        {
+            Name = name;
+            Id = id;
+            IndexInBlock = indexInBlock;
+            Args = args;
+        }
+
+        public global::System.String Name { get; }
+
+        public global::System.String Id { get; }
+
+        public global::System.Int32 IndexInBlock { get; }
+
+        public global::System.String? Args { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.GetBlockByIdResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.BlockEntity, GetBlockById_BlockById_Block> _getBlockById_BlockById_BlockFromBlockEntityMapper;
+        public GetBlockByIdResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.BlockEntity, GetBlockById_BlockById_Block> getBlockById_BlockById_BlockFromBlockEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _getBlockById_BlockById_BlockFromBlockEntityMapper = getBlockById_BlockById_BlockFromBlockEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getBlockById_BlockById_BlockFromBlockEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult);
+        public GetBlockByIdResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GetBlockByIdResultInfo info)
+            {
+                return new GetBlockByIdResult(MapIGetBlockById_BlockById(info.BlockById, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GetBlockByIdResultInfo expected.");
+        }
+
+        private global::Ajuna.SubsquidApi.Console.IGetBlockById_BlockById? MapIGetBlockById_BlockById(global::StrawberryShake.EntityId? entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId is null)
+            {
+                return null;
+            }
+
+            if (entityId.Value.Name.Equals("Block", global::System.StringComparison.Ordinal))
+            {
+                return _getBlockById_BlockById_BlockFromBlockEntityMapper.Map(snapshot.GetEntity<global::Ajuna.SubsquidApi.Console.State.BlockEntity>(entityId.Value) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GetBlockByIdResultInfo(global::StrawberryShake.EntityId? blockById, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            BlockById = blockById;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::StrawberryShake.EntityId? BlockById { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GetBlockByIdResultInfo(BlockById, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockById_BlockById_BlockFromBlockEntityMapper : global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.BlockEntity, GetBlockById_BlockById_Block>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GetBlockById_BlockById_BlockFromBlockEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public GetBlockById_BlockById_Block Map(global::Ajuna.SubsquidApi.Console.State.BlockEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new GetBlockById_BlockById_Block(entity.Id, entity.Height, entity.Hash, entity.ExtrinsicsRoot);
+        }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
@@ -395,6 +1120,226 @@ namespace Ajuna.SubsquidApi.Console.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.GetEventsByNameResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.EventEntity, GetEventsByName_Events_Event> _getEventsByName_Events_EventFromEventEntityMapper;
+        public GetEventsByNameResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.EventEntity, GetEventsByName_Events_Event> getEventsByName_Events_EventFromEventEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _getEventsByName_Events_EventFromEventEntityMapper = getEventsByName_Events_EventFromEventEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getEventsByName_Events_EventFromEventEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult);
+        public GetEventsByNameResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is GetEventsByNameResultInfo info)
+            {
+                return new GetEventsByNameResult(MapNonNullableIGetEventsByName_EventsNonNullableArray(info.Events, snapshot));
+            }
+
+            throw new global::System.ArgumentException("GetEventsByNameResultInfo expected.");
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events> MapNonNullableIGetEventsByName_EventsNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var @events = new global::System.Collections.Generic.List<global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events>();
+            foreach (global::StrawberryShake.EntityId child in list)
+            {
+                @events.Add(MapNonNullableIGetEventsByName_Events(child, snapshot));
+            }
+
+            return @events;
+        }
+
+        private global::Ajuna.SubsquidApi.Console.IGetEventsByName_Events MapNonNullableIGetEventsByName_Events(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId.Name.Equals("Event", global::System.StringComparison.Ordinal))
+            {
+                return _getEventsByName_Events_EventFromEventEntityMapper.Map(snapshot.GetEntity<global::Ajuna.SubsquidApi.Console.State.EventEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public GetEventsByNameResultInfo(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> events, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            Events = events;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> Events { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new GetEventsByNameResultInfo(Events, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByName_Events_EventFromEventEntityMapper : global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.EventEntity, GetEventsByName_Events_Event>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GetEventsByName_Events_EventFromEventEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public GetEventsByName_Events_Event Map(global::Ajuna.SubsquidApi.Console.State.EventEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new GetEventsByName_Events_Event(entity.Name, entity.Id, entity.IndexInBlock, entity.Args);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetBlockByIdBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
+        public GetBlockByIdBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGetBlockByIdResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGetBlockByIdResult Result, GetBlockByIdResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGetBlockByIdResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGetBlockByIdResult, GetBlockByIdResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::StrawberryShake.EntityId? blockByIdId = default !;
+            _entityStore.Update(session =>
+            {
+                blockByIdId = UpdateIGetBlockById_BlockByIdEntity(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "blockById"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GetBlockByIdResultInfo(blockByIdId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::StrawberryShake.EntityId? UpdateIGetBlockById_BlockByIdEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("Block", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::Ajuna.SubsquidApi.Console.State.BlockEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "height")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "hash")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "extrinsicsRoot"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "height")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "hash")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "extrinsicsRoot"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _intParser.Parse(obj.Value.GetInt32()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial class GetFirstTenBlocksBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -493,11 +1438,11 @@ namespace Ajuna.SubsquidApi.Console.State
             {
                 if (session.CurrentSnapshot.TryGetEntity(entityId, out global::Ajuna.SubsquidApi.Console.State.BlockEntity? entity))
                 {
-                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id"))));
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), entity.Height, entity.Hash, entity.ExtrinsicsRoot));
                 }
                 else
                 {
-                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id"))));
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.BlockEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), default !, default !, default !));
                 }
 
                 return entityId;
@@ -518,6 +1463,153 @@ namespace Ajuna.SubsquidApi.Console.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
+    public partial class GetEventsByNameBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _jSONParser;
+        public GetEventsByNameBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
+            _jSONParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<IGetEventsByNameResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (IGetEventsByNameResult Result, GetEventsByNameResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<IGetEventsByNameResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (IGetEventsByNameResult, GetEventsByNameResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> eventsId = default !;
+            _entityStore.Update(session =>
+            {
+                eventsId = UpdateNonNullableIGetEventsByName_EventsEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "events"), entityIds);
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new GetEventsByNameResultInfo(eventsId, entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIGetEventsByName_EventsEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var @events = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @events.Add(UpdateNonNullableIGetEventsByName_EventsEntity(session, child, entityIds));
+            }
+
+            return @events;
+        }
+
+        private global::StrawberryShake.EntityId UpdateNonNullableIGetEventsByName_EventsEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("Event", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::Ajuna.SubsquidApi.Console.State.EventEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.EventEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "indexInBlock")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "args"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::Ajuna.SubsquidApi.Console.State.EventEntity(DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), DeserializeNonNullableInt32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "indexInBlock")), DeserializeString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "args"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Int32 DeserializeNonNullableInt32(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _intParser.Parse(obj.Value.GetInt32()!);
+        }
+
+        private global::System.String? DeserializeString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            return _jSONParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.14.0.0")]
     public partial class BajunClientEntityIdFactory : global::StrawberryShake.IEntityIdSerializer
     {
         private static readonly global::System.Text.Json.JsonWriterOptions _options = new global::System.Text.Json.JsonWriterOptions()
@@ -528,6 +1620,7 @@ namespace Ajuna.SubsquidApi.Console.State
             return __typename switch
             {
                 "Block" => ParseBlockEntityId(obj, __typename),
+                "Event" => ParseEventEntityId(obj, __typename),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -536,6 +1629,7 @@ namespace Ajuna.SubsquidApi.Console.State
             return entityId.Name switch
             {
                 "Block" => FormatBlockEntityId(entityId),
+                "Event" => FormatEventEntityId(entityId),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -545,6 +1639,23 @@ namespace Ajuna.SubsquidApi.Console.State
         }
 
         private global::System.String FormatBlockEntityId(global::StrawberryShake.EntityId entityId)
+        {
+            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
+            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
+            jsonWriter.WriteStartObject();
+            jsonWriter.WriteString("__typename", entityId.Name);
+            jsonWriter.WriteString("id", (global::System.String)entityId.Value);
+            jsonWriter.WriteEndObject();
+            jsonWriter.Flush();
+            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
+        }
+
+        private global::StrawberryShake.EntityId ParseEventEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        {
+            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetString()!);
+        }
+
+        private global::System.String FormatEventEntityId(global::StrawberryShake.EntityId entityId)
         {
             using var writer = new global::StrawberryShake.Internal.ArrayWriter();
             using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
@@ -580,7 +1691,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::Ajuna.SubsquidApi.Console.State.BajunClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetBlockByIdQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetFirstTenBlocksQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetEventsByNameQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.BajunClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.IBajunClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::Ajuna.SubsquidApi.Console.State.BajunClientStoreAccessor>("BajunClient", services, serviceCollection);
@@ -595,7 +1708,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("BajunClient"));
             });
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.BlockEntity, global::Ajuna.SubsquidApi.Console.GetBlockById_BlockById_Block>, global::Ajuna.SubsquidApi.Console.State.GetBlockById_BlockById_BlockFromBlockEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.BlockEntity, global::Ajuna.SubsquidApi.Console.GetFirstTenBlocks_Blocks_Block>, global::Ajuna.SubsquidApi.Console.State.GetFirstTenBlocks_Blocks_BlockFromBlockEntityMapper>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::Ajuna.SubsquidApi.Console.State.EventEntity, global::Ajuna.SubsquidApi.Console.GetEventsByName_Events_Event>, global::Ajuna.SubsquidApi.Console.State.GetEventsByName_Events_EventFromEventEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteSerializer>(services);
@@ -612,7 +1727,15 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("JSON"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>, global::Ajuna.SubsquidApi.Console.State.GetBlockByIdResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>, global::Ajuna.SubsquidApi.Console.State.GetBlockByIdBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetBlockByIdResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.GetBlockByIdQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.IGetBlockByIdQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetBlockByIdQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>, global::Ajuna.SubsquidApi.Console.State.GetFirstTenBlocksResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery>(sp));
@@ -620,6 +1743,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.GetFirstTenBlocksQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.IGetFirstTenBlocksQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetFirstTenBlocksQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>, global::Ajuna.SubsquidApi.Console.State.GetEventsByNameResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>, global::Ajuna.SubsquidApi.Console.State.GetEventsByNameBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Ajuna.SubsquidApi.Console.IGetEventsByNameResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.GetEventsByNameQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.IGetEventsByNameQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.GetEventsByNameQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::Ajuna.SubsquidApi.Console.State.BajunClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.BajunClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Ajuna.SubsquidApi.Console.IBajunClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Ajuna.SubsquidApi.Console.BajunClient>(sp));

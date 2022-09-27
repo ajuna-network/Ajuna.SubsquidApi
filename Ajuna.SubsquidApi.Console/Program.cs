@@ -16,20 +16,38 @@ namespace Ajuna.Subsquid.Demo.Console
             IServiceProvider services = serviceCollection.BuildServiceProvider();
             
             IBajunClient client = services.GetRequiredService<IBajunClient>();
-            
-            // Get 10 latest Blocks
-            IOperationResult<IGetFirstTenBlocksResult> result = await client.GetFirstTenBlocks.ExecuteAsync();
+
+            await GetEvents(client);
+
+            // // Get 10 latest Blocks
+            // IOperationResult<IGetFirstTenBlocksResult> result = await client.GetFirstTenBlocks.ExecuteAsync();
+            // result.EnsureNoErrors();
+            //
+            // foreach (var session in result.Data.Blocks)
+            // {
+            //     System.Console.WriteLine(session.Id);
+            // }
+            //
+            // // Get Block by Id
+            // var block = await client.GetBlockById.ExecuteAsync("0000000000-35a06");
+            // block.EnsureNoErrors();
+            //
+            // System.Console.WriteLine("Hash of Block is:  " + block.Data.BlockById.Hash);
+        }
+        
+        public static async Task GetEvents(IBajunClient client)
+        {
+            IOperationResult<IGetEventsByNameResult> result = await client.GetEventsByName.ExecuteAsync("Balances.Transfer", 100);
             result.EnsureNoErrors();
             
-            foreach (var session in result.Data.Blocks)
-            {
-                System.Console.WriteLine(session.Id);
-            }
             
+            foreach (var @event in result.Data.Events)
+            {
+                System.Console.WriteLine(@event.Id);
+            }
         }
-
-
-
     }
+    
+
 
 }
