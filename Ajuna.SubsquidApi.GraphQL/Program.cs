@@ -1,12 +1,11 @@
 ﻿using Ajuna.SubsquidApi.GraphQL;
-using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
 
 // Instantiate Repository
 var repo = new BajunRepository("https://bajun.explorer.subsquid.io/graphql");
 
 // Get Balance Transfer Events
-// var s = await repo.GetBalanceTransferEvents<BalanceTransfer>();
+ var s = await repo.GetBalanceTransferEvents();
 
 
 // Get Event by Id 

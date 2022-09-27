@@ -1,37 +1,26 @@
 using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
-using GraphQL.Client.Http;
-using GraphQL.Client.Serializer.Newtonsoft;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
 namespace Ajuna.SubsquidApi.GraphQL;
 
-public class BajunRepository
+public class BajunRepository : SubsquidRepositoryBase
 {
-    private readonly GraphQLHttpClient _client;
-    private readonly JsonSerializerSettings _jsonSerializerSettings;
-
-    public BajunRepository(string endPointUrl)
+    public BajunRepository(string endPointUrl) : base(endPointUrl)
     {
-        _jsonSerializerSettings = new JsonSerializerSettings
-            {ContractResolver = new CamelCasePropertyNamesContractResolver()};
-        _client = new GraphQLHttpClient(endPointUrl,new NewtonsoftJsonSerializer(_jsonSerializerSettings));
     }
-    
+
     public Task<List<SubsquidEvent<T>>> GetEventsRequest<T>(GraphQLRequest request)
     {
         return GetMany<SubsquidEvent<T>>(request);
     }
 
-    public  Task<List<SubsquidEvent<T>>> GetBalanceTransferEvents<T>(int limit = 100)
+    public Task<List<SubsquidEvent<BalanceTransfer>>> GetBalanceTransferEvents(int limit = 100)
     {
         var request = GetEventsByName("Balances.Transfer", limit);
-        return GetEventsRequest<T>(request);
+        return GetEventsRequest<BalanceTransfer>(request);
     }
-    
-    public  Task<SubsquidEvent<T>> GetEventById<T>(string id)
+
+    public Task<SubsquidEvent<T>> GetEventById<T>(string id)
     {
         var request = GetEventById(id);
 
@@ -43,35 +32,8 @@ public class BajunRepository
         var request = GetBlockByIdRequest(id);
         return Get<Block<T>>(request);
     }
-    
-    public async Task<TSquidType> Get<TSquidType>(GraphQLRequest request) 
-        where  TSquidType : ModelBase 
-    {
-        var graphQLResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
-        var data = graphQLResponse.Data as JObject;
-        
-        var payload = GetJArrayValue(data, request.OperationName);
-        var @event =
-            JsonConvert.DeserializeObject<TSquidType>(payload , _jsonSerializerSettings);
-        
-        return @event;
-    }
-    
-    public async Task<List<TSquidType>> GetMany<TSquidType>(GraphQLRequest request)
-        where  TSquidType : ModelBase 
-    {
-        var graphQlResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
-        var data = graphQlResponse.Data as JObject;
-        
-        var payload = GetJArrayValue(data, request.OperationName);
- 
-        var events =
-            JsonConvert.DeserializeObject<List<TSquidType>>(payload , _jsonSerializerSettings);
-        
-        return events;
-    }
-    
-    
+
+    #region Requests
 
     private GraphQLRequest GetEventsByName(string name, int limit = 100)
     {
@@ -91,16 +53,14 @@ public class BajunRepository
             {
                 name = name,
                 limit = limit
-            }, OperationName = "events"
+            },
+            OperationName = "events"
         };
     }
 
-    
-    
     private GraphQLRequest GetBlockById(string id)
     {
-        
-         return new GraphQLRequest
+        return new GraphQLRequest
         {
             Query = @"query GetBlockById($id: String!)  {
                    blockById(id: $id) {
@@ -114,11 +74,11 @@ public class BajunRepository
             Variables = new
             {
                 id = id
-            },OperationName = "blockById"
+            },
+            OperationName = "blockById"
         };
-        
     }
-    
+
     private GraphQLRequest GetEventById(string id)
     {
         return new GraphQLRequest
@@ -130,11 +90,11 @@ public class BajunRepository
                         args
                     }
                 }",
-           Variables = new
+            Variables = new
             {
                 id = id,
             },
-           OperationName = "eventById"
+            OperationName = "eventById"
         };
     }
 
@@ -150,7 +110,7 @@ public class BajunRepository
                   args
                 }
               }
-            }", 
+            }",
             OperationName = "blockById",
             Variables = new
             {
@@ -160,21 +120,5 @@ public class BajunRepository
         return blockByIdRequest;
     }
 
-
-
-    private string GetJArrayValue(JObject yourJArray, string key)
-    {
-        foreach (KeyValuePair<string, JToken> keyValuePair in yourJArray)
-            if (key == keyValuePair.Key)
-                return keyValuePair.Value.ToString();
-
-        return null;
-    }
-}
-
-public class BalanceTransfer
-{
-    public string Amount { get; set; }
-    public string From { get; set; }
-    public string To { get; set; }
+    #endregion
 }
