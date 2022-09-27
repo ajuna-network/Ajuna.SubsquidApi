@@ -16,7 +16,28 @@ public class BajunRepository
         _client = client;
     }
 
-    public async Task<List<BalanceTransfer>> GetBalanceTransfers(int limit = 100)
+    // public async Task<List<BalanceTransfer>> GetBalanceTransfers(int limit = 100)
+    // {
+    //     var settings = new JsonSerializerSettings
+    //         {ContractResolver = new CamelCasePropertyNamesContractResolver()};
+    //
+    //     var request = GetEventsByName("Balances.Transfer", limit);
+    //
+    //     var graphQLResponse = await _client.SendQueryAsync<dynamic>(request, CancellationToken.None);
+    //     var data = graphQLResponse.Data as JObject;
+    //     
+    //     var payload = GetJArrayValue(data, "events");
+    //
+    //     var events =
+    //         JsonConvert.DeserializeObject<List<SubsquidEvent>>(payload , settings);
+    //     
+    //
+    //     var balanceTransfers = events.Select(x =>  x.Args.ToObject<BalanceTransfer>()).ToList();
+    //
+    //     return balanceTransfers;
+    // }
+    
+    public async Task<List<SubsquidEvent<T>>> GetEvents<T>(int limit = 100)
     {
         var settings = new JsonSerializerSettings
             {ContractResolver = new CamelCasePropertyNamesContractResolver()};
@@ -29,24 +50,14 @@ public class BajunRepository
         var payload = GetJArrayValue(data, "events");
  
         var events =
-            JsonConvert.DeserializeObject<List<SubsquidEvent>>(payload , settings);
+            JsonConvert.DeserializeObject<List<SubsquidEvent<T>>>(payload , settings);
         
-
-        var balanceTransfers = events.Select(x =>  x.Args.ToObject<BalanceTransfer>()).ToList();
-
-        return balanceTransfers;
+        return events;
+        
     }
 
-    public class Container
-    {
-        public List<SubsquidEvent> Events { get; set; }
-    }
     private GraphQLRequest GetEventsByName(string name, int limit = 100)
     {
-        // block {
-        //     id
-        //         hash}
-        
         return new GraphQLRequest
         {
             Query = @"query GetEventsByName($name: String!, $limit: Int!) {

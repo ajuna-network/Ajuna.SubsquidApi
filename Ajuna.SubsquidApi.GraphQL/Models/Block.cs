@@ -1,6 +1,6 @@
 namespace Ajuna.SubsquidApi.GraphQL.Models;
 
-public class Block : ModelBase
+public class Block<T> : ModelBase
 {
     public int? Height { get; set; }
     public string? Hash { get; set; }
@@ -9,8 +9,8 @@ public class Block : ModelBase
     public Metadata? Spec { get; set; }
     public string? Validator { get; set; }
 
-    public List<SubsquidEvent> Events { get; set; }
-    public List<Call> Calls { get; set; }
-    public List<Extrinsic> Extrinsics { get; set; }
+    public List<SubsquidEvent<T>> Events { get; set; }
+    public List<Call<T>> Calls { get; set; }
+    public List<Extrinsic<T>> Extrinsics { get; set; }
 
 }

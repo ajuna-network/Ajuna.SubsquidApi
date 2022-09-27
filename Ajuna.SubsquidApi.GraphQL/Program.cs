@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Ajuna.SubsquidApi.GraphQL;
+﻿using Ajuna.SubsquidApi.GraphQL;
 using Ajuna.SubsquidApi.GraphQL.Models;
 using GraphQL;
 using GraphQL.Client.Http;
@@ -19,7 +18,7 @@ var graphQLClient = new GraphQLHttpClient("https://bajun.explorer.subsquid.io/gr
 
 var repo = new BajunRepository(graphQLClient);
 
-var s = await repo.GetBalanceTransfers();
+var s = await repo.GetEvents<BalanceTransfer>();
 
 
 
@@ -46,7 +45,7 @@ var graphQLResponse = await graphQLClient.SendQueryAsync<dynamic>(bajunRequest, 
 var ss = graphQLResponse.Data as JObject;
 
 var hssh = GetJArrayValue(ss, "blockById");
-var json = JsonConvert.DeserializeObject<Block>(hssh, settings);
+var json = JsonConvert.DeserializeObject<Block<dynamic>>(hssh, settings);
 
 
 //
