@@ -1,0 +1,23 @@
+query GetBlockById($id: String!)  {
+   blockById(id: $id) {
+      id
+      height
+      hash
+      extrinsicsRoot
+    }
+}
+
+query GetFirstTenBlocks  {
+  blocks(limit: 10) {
+    id
+  }
+}
+
+query GetEventsByName($name: String!, $limit: Int!) {
+  events(limit: $limit, where: {name_eq: $name}) {
+    name
+    id
+    indexInBlock
+    args    
+  }
+}
